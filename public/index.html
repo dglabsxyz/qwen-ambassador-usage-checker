@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Qwen API Usage</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Qwen API Usage</h1>
+        <p class="model"><span>Model:</span> Qwen-Ambassador/Qwen3.8-Max</p>
+        <p class="lede">Manually check your ModelScope API request usage for this private model.</p>
+        <button id="check-button" class="primary-button" type="button">Check Usage</button>
+        <p class="request-note">Each live check consumes one ModelScope request.</p>
+      </div>
+
+      <aside class="status-panel" aria-labelledby="status-heading">
+        <h2 id="status-heading">Status</h2>
+        <p id="status" class="status" aria-live="polite">No live check has been run yet. Press “Check Usage” to fetch the latest usage.</p>
+      </aside>
+    </section>
+
+    <section class="quota-panel" aria-labelledby="quota-heading">
+      <h2 id="quota-heading" class="visually-hidden">Monthly quota</h2>
+      <div class="metric-grid">
+        <article class="metric">
+          <h3>Monthly limit</h3>
+          <strong id="limit-value">—</strong>
+          <span>requests</span>
+        </article>
+        <article class="metric">
+          <h3>Used</h3>
+          <strong id="used-value">—</strong>
+          <span>requests</span>
+        </article>
+        <article class="metric metric-accent">
+          <h3>Remaining</h3>
+          <strong id="remaining-value">—</strong>
+          <span>requests</span>
+        </article>
+      </div>
+      <div class="progress-labels">
+        <span id="progress-label">No usage data</span>
+        <span>100%</span>
+      </div>
+      <progress id="usage-progress" max="100" value="0" aria-label="Monthly request quota used">0%</progress>
+    </section>
+
+    <section class="detail-grid" aria-label="Probe details">
+      <div class="token-panel">
+        <article class="detail">
+          <h2>Prompt tokens</h2>
+          <strong id="prompt-tokens">—</strong>
+          <span>tokens</span>
+        </article>
+        <article class="detail">
+          <h2>Completion tokens</h2>
+          <strong id="completion-tokens">—</strong>
+          <span>tokens</span>
+        </article>
+        <article class="detail">
+          <h2>Total tokens</h2>
+          <strong id="total-tokens">—</strong>
+          <span>tokens</span>
+        </article>
+      </div>
+      <article class="checked-panel">
+        <h2>Last checked</h2>
+        <strong id="checked-at">Never</strong>
+        <span id="cache-state">—</span>
+      </article>
+    </section>
+
+    <section class="history-panel" aria-labelledby="history-heading">
+      <div class="history-header">
+        <h2 id="history-heading">Local History <span>(stored in this browser)</span></h2>
+        <button id="clear-history" class="secondary-button" type="button">Clear Local History</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Used</th><th>Remaining</th><th>Usage</th></tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+        <div id="history-empty" class="empty-state">
+          <strong>No history yet.</strong>
+          <span>Your results will appear here after you run a check.</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="privacy-note">Quota data comes from ModelScope and is stored only in this browser’s local history.</p>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

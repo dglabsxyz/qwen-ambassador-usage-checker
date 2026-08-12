@@ -1,0 +1,14 @@
+.worktrees/
+node_modules/
+coverage/
+.env
+.env.*
+!.env.example
+.dev.vars*
+npm-debug.log*
+work/guide/screenshots/
+work/guide/generated/
+work/design/
+work/public-repo/
+work/public-source.tar
+outputs/
